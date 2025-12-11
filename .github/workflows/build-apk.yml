@@ -1,4 +1,3 @@
-mkdir -p .github/workflows && cat > .github/workflows/build-apk.yml << 'EOF'
 name: Build Debug APK
 
 on:
