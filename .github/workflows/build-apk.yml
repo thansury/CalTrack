@@ -1,3 +1,4 @@
+mkdir -p .github/workflows && cat > .github/workflows/build-apk.yml << 'EOF'
 name: Build Debug APK
 
 on:
@@ -12,10 +13,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808479a29c0d7f36
+        uses: actions/checkout@v4
 
       - name: Set up JDK 17
-        uses: actions/setup-java@7a60c6316e598ea0db4e9bc6e8986479d907cd40
+        uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
@@ -27,7 +28,8 @@ jobs:
         run: ./gradlew assembleDebug
 
       - name: Upload APK as artifact
-        uses: actions/upload-artifact@65462800b996a98929734804e5412326a8d05b8a
+        uses: actions/upload-artifact@v4
         with:
           name: app-debug-apk
           path: app/build/outputs/apk/debug/app-debug.apk
+EOF
